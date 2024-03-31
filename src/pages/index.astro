@@ -1,9 +1,7 @@
 ---
 import "../styles/global.css";
-import Header from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-const astro = "Astro";
 ---
 
 <html lang='en'>
@@ -12,13 +10,13 @@ const astro = "Astro";
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
-    <title>{astro}</title>
+    <title>Astro</title>
   </head>
   <body>
     <Header />
     <hr />
 
-    <h1>{astro} by Eva</h1>
+    <h1>Astro by Eva</h1>
     <h2>Mi primer sitio con Astro</h2>
     <Footer />
 
