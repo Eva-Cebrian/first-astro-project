@@ -1,0 +1,28 @@
+---
+import Social from "./Social.astro";
+const platform = "github";
+const username = "eva-cebrian";
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+
+<footer>
+  <p>
+    ¡Más información sobre mis proyectos en <a
+      href={`https://www.${platform}.com/${username}`}>{platform}</a
+    >!
+  </p>
+  <p>
+    Sigueme en:
+    <ul>
+      <li><Social platform='facebook' username='teoyleo' /></li>
+      <li><Social platform='twitter' username='eva_cebrian' /></li>
+    </ul>
+  </p>
+</footer>

@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
 const sobreMi = "Sobre mi";
 const idEva = {
   firstName: "Eva",
@@ -18,9 +22,6 @@ const happy = true;
 const finished = true;
 const goal = 3;
 const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
-const backGround = "yellow";
 ---
 
 <html lang='en'>
@@ -30,7 +31,7 @@ const backGround = "yellow";
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>{sobreMi}</title>
-    <style define:vars={{ skillColor, fontWeight, textCase, backGround }}>
+    <style define:vars={{ skillColor }}>
       h1 {
         color: purple;
         font-size: 4rem;
@@ -38,16 +39,11 @@ const backGround = "yellow";
       .skills {
         font-weight: bold;
         color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-        background-color: var(--backGround);
       }
     </style>
   </head>
   <body>
-    <a href='/'>Inicio</a>
-    <a href='/about'>About</a>
-    <a href='/blog'>Blog</a>
+    <Header />
     <hr />
     <h1>Pagina {sobreMi} de mi primer proyecto Astro</h1>
     <h2>{sobreMi}</h2>
@@ -75,5 +71,6 @@ const backGround = "yellow";
         <p>Mi objetivo no son 3 días.</p>
       )
     }
+    <Footer />
   </body>
 </html>
