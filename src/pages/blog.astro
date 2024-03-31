@@ -2,6 +2,11 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Blogpost from "../components/Blogpost.astro";
+
+const pageTitle = "BLOG";
+const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
 <html lang='en'>
@@ -13,26 +18,18 @@ import Header from "../components/Header.astro";
     <title>Blog</title>
   </head>
   <body>
-    <Header />
-    <hr />
-    <h1>BLOG</h1>
-    <h2>Mi primer blog</h2>
-    <p>
-      Netlify es una plataforma de desarrollo web que ofrece servicios de
-      alojamiento y backend sin servidor para aplicaciones web y sitios
-      estáticos. Esta plataforma se centra en la facilidad de uso, la
-      automatización y la integración con herramientas de desarrollo, lo que
-      permite a los desarrolladores y equipos desplegar sitios y aplicaciones
-      web rápidamente y con menos complicaciones.
-    </p>
-    <ul>
-      <li><a href='/posts/post-1/'>Publicación 1</a></li>
-      <li><a href='/posts/post-2/'>Publicación 2</a></li>
-      <li><a href='/posts/post-3/'>Publicación 3</a></li>
-    </ul>
-    <Footer />
-    <script>
-      import "../scripts/menu";
-    </script>
+    <BaseLayout pageTitle={pageTitle}>
+      <h2>Mi primer blog</h2>
+      <p>
+        Netlify es una plataforma de desarrollo web que ofrece servicios de
+        alojamiento y backend sin servidor para aplicaciones web y sitios
+        estáticos. Esta plataforma se centra en la facilidad de uso, la
+        automatización y la integración con herramientas de desarrollo, lo que
+        permite a los desarrolladores y equipos desplegar sitios y aplicaciones
+        web rápidamente y con menos complicaciones.
+      </p>
+
+      <Blogpost />
+    </BaseLayout>
   </body>
 </html>

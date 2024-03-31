@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const sobreMi = "Sobre mi";
 const idEva = {
@@ -22,6 +23,7 @@ const happy = true;
 const finished = true;
 const goal = 3;
 const skillColor = "navy";
+const pageTitle = "Pagina Sobre mi primer proyecto Astro";
 ---
 
 <html lang='en'>
@@ -32,10 +34,6 @@ const skillColor = "navy";
     <meta name='generator' content={Astro.generator} />
     <title>{sobreMi}</title>
     <style define:vars={{ skillColor }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
       .skills {
         font-weight: bold;
         color: var(--skillColor);
@@ -43,37 +41,32 @@ const skillColor = "navy";
     </style>
   </head>
   <body>
-    <Header />
-    <hr />
-    <h1>Pagina {sobreMi} de mi primer proyecto Astro</h1>
-    <h2>{sobreMi}</h2>
-    <p>Aqui algunos datos sobre mi:</p>
-    <ul>
-      <li>Me llamo {idEva.firstName}.</li>
-      <li>Mi ocupacion es {idEva.occupation}</li>
-      <li>Mi pais es {idEva.country}</li>
-      <li>
-        Dos de mis hobbies son {idEva.hobbies[0]} y {idEva.hobbies[2]}
-      </li>
-    </ul>
-    <p>Mis habilidades son:</p>
-    <ul>
-      {skills.map((v) => <li class='skills'>{v}</li>)}
-    </ul>
-    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+    <BaseLayout pageTitle={pageTitle}>
+      <h2>{sobreMi}</h2>
+      <p>Aqui algunos datos sobre mi:</p>
+      <ul>
+        <li>Me llamo {idEva.firstName}.</li>
+        <li>Mi ocupacion es {idEva.occupation}</li>
+        <li>Mi pais es {idEva.country}</li>
+        <li>
+          Dos de mis hobbies son {idEva.hobbies[0]} y {idEva.hobbies[2]}
+        </li>
+      </ul>
+      <p>Mis habilidades son:</p>
+      <ul>
+        {skills.map((v) => <li class='skills'>{v}</li>)}
+      </ul>
+      {happy && <p>¡Estoy feliz de aprender Astro!</p>}
 
-    {finished && <p>¡He terminado este tutorial!</p>}
+      {finished && <p>¡He terminado este tutorial!</p>}
 
-    {
-      goal === 3 ? (
-        <p>Mi objetivo es terminar en 3 días.</p>
-      ) : (
-        <p>Mi objetivo no son 3 días.</p>
-      )
-    }
-    <Footer />
-    <script>
-      import "../scripts/menu";
-    </script>
+      {
+        goal === 3 ? (
+          <p>Mi objetivo es terminar en 3 días.</p>
+        ) : (
+          <p>Mi objetivo no son 3 días.</p>
+        )
+      }
+    </BaseLayout>
   </body>
 </html>
