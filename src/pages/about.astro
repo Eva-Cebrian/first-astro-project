@@ -1,5 +1,26 @@
 ---
-
+const sobreMi = "Sobre mi";
+const idEva = {
+  firstName: "Eva",
+  occupation: "Dev",
+  country: "Spain",
+  hobbies: ["hacer fotos", "canoe", "dibujar"],
+};
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "Astro",
+  "Redacción de documentos",
+];
+const happy = true;
+const finished = true;
+const goal = 3;
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+const backGround = "yellow";
 ---
 
 <html lang='en'>
@@ -8,23 +29,51 @@
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
-    <title>About</title>
+    <title>{sobreMi}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase, backGround }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skills {
+        font-weight: bold;
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+        background-color: var(--backGround);
+      }
+    </style>
   </head>
   <body>
     <a href='/'>Inicio</a>
     <a href='/about'>About</a>
     <a href='/blog'>Blog</a>
     <hr />
-    <h1>Pagina about de mi primer proyecto Astro</h1>
-    <h2>Sobre mi</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-      exercitationem deleniti tempora praesentium est porro cumque hic minus
-      quod, iste nemo veniam. Vero porro libero ex labore deserunt quasi ipsa.
-    </p>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi,
-      voluptatibus.
-    </p>
+    <h1>Pagina {sobreMi} de mi primer proyecto Astro</h1>
+    <h2>{sobreMi}</h2>
+    <p>Aqui algunos datos sobre mi:</p>
+    <ul>
+      <li>Me llamo {idEva.firstName}.</li>
+      <li>Mi ocupacion es {idEva.occupation}</li>
+      <li>Mi pais es {idEva.country}</li>
+      <li>
+        Dos de mis hobbies son {idEva.hobbies[0]} y {idEva.hobbies[2]}
+      </li>
+    </ul>
+    <p>Mis habilidades son:</p>
+    <ul>
+      {skills.map((v) => <li class='skills'>{v}</li>)}
+    </ul>
+    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+    {finished && <p>¡He terminado este tutorial!</p>}
+
+    {
+      goal === 3 ? (
+        <p>Mi objetivo es terminar en 3 días.</p>
+      ) : (
+        <p>Mi objetivo no son 3 días.</p>
+      )
+    }
   </body>
 </html>
